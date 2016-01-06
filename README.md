@@ -1,4 +1,7 @@
 # DynamodbToCSV4j
+![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
+
+
 This application will export the content of a DynamoDB table into a CSV (Comma delimited value) output. All you need to do is create a config.json file in that same directory where you configure your accessKeyId, secretAccessKey and region as such:
 ```javascript
 {
