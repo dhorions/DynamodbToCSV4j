@@ -96,7 +96,25 @@ Steinbeck;John;Of Mice and Man;Travels With Charlie;Tortilla Flat;N/A;N/A;1;N/A;
 ```
 
 ## Maven
-TODO : include maven xml
+The project can be used as a Maven dependency by using jitpack.io.
+* add the repository : 
+```xml
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+```
+* add the dependency
+```xml
+<dependencies>
+	<dependency>
+	    <groupId>com.github.dhorions</groupId>
+	    <artifactId>DynamodbToCSV4j</artifactId>
+	    <version>v0.1</version>
+	</dependency>
+</dependencies>
+```
+
 ## Usage in your java code
 ```java
 JSONObject config = new JSONObject();
