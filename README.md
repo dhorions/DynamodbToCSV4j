@@ -48,7 +48,7 @@ The examples will use a very simple table, with mixed records that contain maps 
 ```javascript
 {
   "accessKeyId": "REPLACE",
-  "secretAccessKey": "REPLACE+ntj3r",
+  "secretAccessKey": "REPLACE",
   "region": "eu-west-1",
   "tableName":"testtable",
   "outputfile":"example_1.csv",
@@ -77,7 +77,7 @@ Steinbeck;John;Of Mice and Man;Travels With Charlie;Tortilla Flat;1;1
 ```javascript
 {
   "accessKeyId": "REPLACE",
-  "secretAccessKey": "REPLACE+ntj3r",
+  "secretAccessKey": "REPLACE",
   "region": "eu-west-1",
   "tableName":"testtable",
   "outputfile":"example_2.csv",
