@@ -94,3 +94,15 @@ Hamilton;Peter;Pandora's Star;Judas Unchained;The Dreaming Void;The Temportal Vo
 Steinbeck;John;Of Mice and Man;Travels With Charlie;Tortilla Flat;N/A;N/A;1;N/A;N/A;1
 
 ```
+
+## Maven
+TODO : include maven xml
+## Usage in your java code
+```java
+JSONObject config = new JSONObject();
+config.put("accessKeyId","REPLACE");
+config.put("secretAccessKey","REPLACE");
+config.put("region","eu-west-1");
+config.put("tableName","testtable");
+d2csv d = new d2csv(config);
+``` 
