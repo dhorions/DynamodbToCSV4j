@@ -127,3 +127,6 @@ config.put("region","eu-west-1");
 config.put("tableName","testtable");
 d2csv d = new d2csv(config);
 ``` 
+
+## Alternative options to export data from dynamodb to csv
+This [article on medium](https://medium.com/@quodlibet_be/an-overview-of-tools-to-export-from-dynamoddb-to-csv-d2707ad992ac#.52ymlbfv1) gives an overview of alternative options to export data to comma separated files from dynamodb.
