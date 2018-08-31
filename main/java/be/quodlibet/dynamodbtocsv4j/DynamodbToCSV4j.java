@@ -1,7 +1,7 @@
 package be.quodlibet.dynamodbtocsv4j;
 
-import com.amazonaws.util.json.JSONException;
-import com.amazonaws.util.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
