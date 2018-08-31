@@ -2,7 +2,7 @@
 ![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
 
 
-This application will export the content of a DynamoDB table into a CSV (Comma delimited value) output. All you need to do is create a config.json file in that same directory where you configure your accessKeyId, secretAccessKey and region as such:
+This application will export the content of a DynamoDB table into a CSV (Comma delimited value) output. All you need to do is create a config.json file where you configure the table to export and some other optional parameters.  The config might look like:
 ```javascript
 {
   "accessKeyId": "REPLACE",
@@ -25,20 +25,21 @@ This will use the myConfig.json file.
 
 | parameter | Description
 | ------------- |-------------| 
-| accessKeyId | Your AWS access key
-| secretAccessKey | Your AWS secret access key
-| region | The AWS Region name
 | tableName | The name of the dynamodb table
 
 ## Optional Configuration settings
 
 | parameter | Description
 | ------------- |-------------| 
+| accessKeyId | Your AWS access key (if this is specified then secretAccessKey is required)
+| secretAccessKey | Your AWS secret access key
+| region | The name of the AWS Region where the DynamoDB database is hosted
 | outputfile | The outputfile.  Default will be tablename.csv
 | delimiter | The column delimiter, default will be ,
 | quotechar | The csv quote character
 | headers | If set to anything but "true", the column headers will not be in the output
 | nullstring | String to put in columns that have no value
+| projectionExpression | The [projection expression](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ProjectionExpressions.html) that defines which fields to return
 | filterExpression | The [filter expression](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults) for the scan operation to get the data from dynamodb 
 | expressionAttributeValues | The [values](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html#ExpressionAttributeValues) for the filterExpression
 | expressionAttributeNames | The [names](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html#ExpressionAttributeNames) for the filterExpression
@@ -46,7 +47,28 @@ This will use the myConfig.json file.
 ## Examples
 The examples will use a very simple table, with mixed records that contain maps and lists.
 ![Screenshot of testtable](https://s3.amazonaws.com/misc.quodlibet.be/dynamodb2csv4j/testtable.png)
-### Example 1 
+### Example 1
+
+This assumes that your AWS credentials and region will be found in your environment.  See [setting up credentials](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html).
+If any of the field names are reserved words then they can be mapped using expressionAttributeNames (see next example).
+
+#### Configuration
+```javascript
+{
+  "tableName":"testtable",
+  "headers":"true",
+  "projectionExpression":"lastName, firstName",
+}
+```
+#### Output
+```
+lastName,firstName
+Steinbeck,John
+```
+### Example 2
+
+You can also specify credentials explicitly if you wish, as well as setting a filter expression so that only a subset of records will be returned.
+
 #### Configuration
 ```javascript
 {
@@ -75,7 +97,7 @@ The examples will use a very simple table, with mixed records that contain maps 
 lastName;firstName;books.0;books.1;books.2;secondary_key;primary_key
 Steinbeck;John;Of Mice and Man;Travels With Charlie;Tortilla Flat;1;1
 ```
-### Example 2 
+### Example 3
 #### Configuration
 ```javascript
 {
